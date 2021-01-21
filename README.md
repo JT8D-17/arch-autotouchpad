@@ -25,7 +25,7 @@ Arch-based distros:
 `makepkg -sci`
 
 Note:    
-The `.install`script will enable the systemd unit automatically and reload and trigger udev rules. If you do not want this, comment out the `install=` line in PKGBUILD.
+The `.install` script will enable the systemd unit automatically and reload and trigger udev rules. If you do not want this, comment out the `install=` line in PKGBUILD.
 
 &nbsp;
 
