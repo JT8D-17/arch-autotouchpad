@@ -1,0 +1,2 @@
+SUBSYSTEM=="input", KERNEL=="mouse[0-9]*", ACTION=="add",    RUN+="/usr/share/autotouchpad/autotouchpad.sh disable"
+SUBSYSTEM=="input", KERNEL=="mouse[0-9]*", ACTION=="remove", RUN+="/usr/share/autotouchpad/autotouchpad.sh enable"

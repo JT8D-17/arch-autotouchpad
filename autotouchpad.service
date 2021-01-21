@@ -1,0 +1,10 @@
+[Unit]
+Description=Systemd unit for Autotouchpad
+After=graphical.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/share/autotouchpad/autotouchpad.sh startup
+
+[Install]
+WantedBy=graphical.target

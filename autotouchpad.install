@@ -1,0 +1,19 @@
+post_install() {
+echo 
+echo "Enabling autotouchpad systemd unit..."
+systemctl enable autotouchpad
+echo 
+echo "Reloading udev rules..."
+udevadm control --reload-rules
+echo
+echo "Triggering udev..."
+udevadm trigger
+echo
+} 
+
+pre_remove() {
+echo 
+echo "Disabling autotouchpad systemd unit..."
+systemctl disable autotouchpad
+echo
+}
