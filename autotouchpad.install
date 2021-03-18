@@ -1,39 +1,43 @@
 post_install() {
 echo 
-echo "Enabling autotouchpad systemd unit..."
-systemctl enable autotouchpad
+echo "Enabling autotouchpad systemd timer..."
+systemctl enable --now autotouchpad.timer
 echo 
 echo "Reloading udev rules..."
 udevadm control --reload-rules
 echo
 echo "Triggering udev..."
 udevadm trigger
-echo
+echo 
 }
 
 post_upgrade() {
 echo 
-echo "Enabling autotouchpad systemd unit..."
-systemctl enable autotouchpad
+echo "Enabling autotouchpad systemd timer..."
+systemctl enable --now autotouchpad.timer
 echo 
 echo "Reloading udev rules..."
 udevadm control --reload-rules
 echo
 echo "Triggering udev..."
 udevadm trigger
-echo
+echo 
 }
 
 pre_remove() {
 echo 
-echo "Disabling autotouchpad systemd unit..."
-systemctl disable autotouchpad
-echo
+echo "Stopping autotouchpad systemd timer..."
+systemctl stop autotouchpad.timer
+echo "Disabling autotouchpad systemd timer..."
+systemctl disable autotouchpad.timer
+echo 
 }
 
 pre_upgrade() {
 echo 
-echo "Disabling autotouchpad systemd unit..."
-systemctl disable autotouchpad
-echo
+echo "Stopping autotouchpad systemd timer..."
+systemctl stop autotouchpad.timer
+echo "Disabling autotouchpad systemd timer..."
+systemctl disable autotouchpad.timer
+echo 
 }
