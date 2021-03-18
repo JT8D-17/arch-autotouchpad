@@ -3,7 +3,7 @@
 #
 pkgname=autotouchpad
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Auto-toggles the touchpad status via shell script, systemd unit and udev rule"
 arch=("any")
 license=("FDL")
@@ -21,6 +21,6 @@ md5sums=('a8fac476d7576f731cb75588aae9f5ae'
 # Update md5sums wih 'updpkgsums'
 package() {
 	install -Dpm 0644 $_systemdunit "$pkgdir/usr/lib/systemd/system/$_systemdunit"
-	install -Dpm 0744 $_udevrule "$pkgdir/etc/udev/rules.d/$_udevrule"
+	install -Dpm 0644 $_udevrule "$pkgdir/etc/udev/rules.d/$_udevrule"
 	install -Dpm 0744 $_script "$pkgdir/usr/share/$pkgname/$_script"
 } 
