@@ -1,0 +1,11 @@
+[Unit]
+Description=Systemd timer for Autotouchpad
+After=graphical.target
+Requires=graphical.target
+
+[Timer]
+OnActiveSec=5s
+Unit=autotouchpad.service
+
+[Install]
+WantedBy=graphical.target
