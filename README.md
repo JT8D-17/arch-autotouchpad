@@ -1,8 +1,8 @@
 # Autotouchpad (for Arch-based distros)
 
-Discontent with the lack of working means to automatically disable/enable the touchpad of my laptop when a USB mouse is plugged in made mewrite this small tool.    
+Discontent with the lack of working means to automatically disable/enable the touchpad of my laptop when a USB mouse is plugged in made me write this small tool.    
 
-Autotouchpad consists of a shell script that will change the touchpad's status when a USB mouse is plugged into (or is removed from) the laptop at runtime (via udev rule) or disable the touchpad when a USB mouse is detected as plugged in upon boot (viasystemd unit).
+Autotouchpad consists of a shell script that will change the touchpad's status when a USB mouse is plugged into (or is removed from) the laptop at runtime (via udev rule) or disable the touchpad when a USB mouse is detected as plugged in upon boot (via systemd timer triggering a systemd unit 5 seconds after reaching graphical.target).
 
 The shell script will scan for a mouse and touchpad via `xinput list` (search strings: `ouchpad` and `USB.*mouse`) and toggle the touchpad via _xinput enable/disable_. It will also (attempt to) send a notification about a status change via `notify-send`.
 
@@ -25,7 +25,7 @@ Arch-based distros:
 `makepkg -sci`
 
 Note:    
-The `.install` script will enable the systemd unit automatically and reload and trigger udev rules. If you do not want this, comment out the `install=` line in PKGBUILD.
+The `.install` script will enable the systemd unit automatically after installation or a package upgrade and reload and trigger udev rules. If you do not want this, comment out the `install=` line in PKGBUILD.
 
 &nbsp;
 
@@ -34,7 +34,7 @@ The `.install` script will enable the systemd unit automatically and reload and 
 Arch-based distros:    
 `pacman -Rsn autotouchpad`
 
-The sysemd unit will be disabled automatically pre-removal.
+The systemd unit will be disabled automatically pre-removal (and pre-upgrade).
 
 &nbsp;
 
